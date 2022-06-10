@@ -58,6 +58,13 @@ namespace Day59DemoValidations.Models
         [Unicode(false)]
         public string Password { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        [Unicode(false)]
+        [Compare(nameof(Password), ErrorMessage = "Reentered password does not match")]
+        [Display(Name = "Re-Enter Password")]
+        public string PasswordReenter { get; set; }
+
         [ForeignKey("DepartmentRefId")]
         [InverseProperty("Users")]
         public virtual Department DepartmentRef { get; set; }
